@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <radialGradient id="hubBrass" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#E5C788"/>
+      <stop offset="60%" stop-color="#B89555"/>
+      <stop offset="100%" stop-color="#49381A"/>
+    </radialGradient>
+    <linearGradient id="oakWood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7A5633"/>
+      <stop offset="50%" stop-color="#553920"/>
+      <stop offset="100%" stop-color="#342010"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 8 Wheel Spokes with Handles extending beyond outer rim -->
+  <g stroke="url(#oakWood)" stroke-linecap="round">
+    <!-- 0 deg / 180 deg (Vertical) -->
+    <line x1="80" y1="12" x2="80" y2="148" stroke-width="6"/>
+    <!-- 90 deg / 270 deg (Horizontal) -->
+    <line x1="12" y1="80" x2="148" y2="80" stroke-width="6"/>
+    <!-- 45 deg / 225 deg -->
+    <line x1="32" y1="32" x2="128" y2="128" stroke-width="6"/>
+    <!-- 135 deg / 315 deg -->
+    <line x1="128" y1="32" x2="32" y2="128" stroke-width="6"/>
+  </g>
+
+  <!-- Turned Spoke Handles (Grips at spoke ends) -->
+  <g fill="url(#hubBrass)" stroke="#342010" stroke-width="1">
+    <circle cx="80" cy="14" r="5"/>
+    <circle cx="80" cy="146" r="5"/>
+    <circle cx="14" cy="80" r="5"/>
+    <circle cx="146" cy="80" r="5"/>
+    <circle cx="33" cy="33" r="5"/>
+    <circle cx="127" cy="127" r="5"/>
+    <circle cx="127" cy="33" r="5"/>
+    <circle cx="33" cy="127" r="5"/>
+  </g>
+
+  <!-- Outer Felloe / Wooden Rim -->
+  <circle cx="80" cy="80" r="54" fill="none" stroke="url(#oakWood)" stroke-width="12"/>
+  <!-- Brass Reinforcing Rings on Rim -->
+  <circle cx="80" cy="80" r="59" fill="none" stroke="#B89555" stroke-width="1.8"/>
+  <circle cx="80" cy="80" r="49" fill="none" stroke="#B89555" stroke-width="1.8"/>
+
+  <!-- Brass Rim Studs / Rivets (8 sections) -->
+  <g fill="#F4EBDD">
+    <circle cx="80" cy="26" r="1.5"/>
+    <circle cx="80" cy="134" r="1.5"/>
+    <circle cx="26" cy="80" r="1.5"/>
+    <circle cx="134" cy="80" r="1.5"/>
+    <circle cx="42" cy="42" r="1.5"/>
+    <circle cx="118" cy="118" r="1.5"/>
+    <circle cx="118" cy="42" r="1.5"/>
+    <circle cx="42" cy="118" r="1.5"/>
+  </g>
+
+  <!-- Inner Spoke Support Ring -->
+  <circle cx="80" cy="80" r="26" fill="none" stroke="url(#hubBrass)" stroke-width="4"/>
+
+  <!-- Center Hub with Keyway Cover -->
+  <circle cx="80" cy="80" r="18" fill="url(#hubBrass)" stroke="#342010" stroke-width="2"/>
+  <circle cx="80" cy="80" r="10" fill="#18363A" stroke="#B89555" stroke-width="1.5"/>
+  <circle cx="80" cy="80" r="4" fill="#F4EBDD"/>
+</svg>

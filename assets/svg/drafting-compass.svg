@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dividersBrass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4EBDD"/>
+      <stop offset="40%" stop-color="#B89555"/>
+      <stop offset="100%" stop-color="#5C451D"/>
+    </linearGradient>
+    <linearGradient id="steelPoint" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B5C4C0"/>
+      <stop offset="60%" stop-color="#E8ECEB"/>
+      <stop offset="100%" stop-color="#718B83"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Top Handle / Finger Turn -->
+  <rect x="77" y="10" width="6" height="14" rx="2" fill="url(#dividersBrass)" stroke="#49382A" stroke-width="1"/>
+  <line x1="75" y1="14" x2="85" y2="14" stroke="#B89555" stroke-width="1.5"/>
+  <line x1="75" y1="18" x2="85" y2="18" stroke="#B89555" stroke-width="1.5"/>
+
+  <!-- Hinged Head Circular Joint -->
+  <circle cx="80" cy="30" r="12" fill="url(#dividersBrass)" stroke="#49382A" stroke-width="2"/>
+  <circle cx="80" cy="30" r="6" fill="#18363A" stroke="#B89555" stroke-width="1.5"/>
+  <circle cx="80" cy="30" r="2.5" fill="#F4EBDD"/>
+
+  <!-- Left Leg -->
+  <path d="M 75 38 L 52 118 L 48 142 L 50 142 L 60 118 L 79 40 Z" fill="url(#dividersBrass)" stroke="#49382A" stroke-width="1"/>
+  <!-- Left Steel Needle Tip -->
+  <polygon points="48,142 50,142 49,152" fill="url(#steelPoint)" stroke="#49382A" stroke-width="0.8"/>
+
+  <!-- Right Leg -->
+  <path d="M 85 38 L 108 118 L 112 142 L 110 142 L 100 118 L 81 40 Z" fill="url(#dividersBrass)" stroke="#49382A" stroke-width="1"/>
+  <!-- Right Steel Needle Tip -->
+  <polygon points="110,142 112,142 111,152" fill="url(#steelPoint)" stroke="#49382A" stroke-width="0.8"/>
+
+  <!-- Curved Measuring Quadrant / Limiter Arc -->
+  <path d="M 60 84 A 42 42 0 0 1 100 84" fill="none" stroke="url(#dividersBrass)" stroke-width="3" stroke-linecap="round"/>
+  <!-- Thumbscrew Adjustment Wheel on Arc -->
+  <circle cx="94" cy="83" r="5" fill="#E5C788" stroke="#49382A" stroke-width="1.2"/>
+  <line x1="91" y1="83" x2="97" y2="83" stroke="#49382A" stroke-width="1"/>
+  <line x1="94" y1="80" x2="94" y2="86" stroke="#49382A" stroke-width="1"/>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="brassMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C788"/>
+      <stop offset="50%" stop-color="#B89555"/>
+      <stop offset="100%" stop-color="#6B5224"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Arc Frame (bottom 60 degrees) -->
+  <path d="M 28 128 A 105 105 0 0 1 132 128" fill="none" stroke="url(#brassMetallic)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 33 133 A 112 112 0 0 1 127 133" fill="none" stroke="#49382A" stroke-width="1.5"/>
+
+  <!-- Arc Degree Ticks (Engraved Vernier Scale) -->
+  <path d="M 32 128 L 32 122 M 42 131 L 43 125 M 52 133 L 54 127 M 63 135 L 65 129 M 74 136 L 75 130 M 80 136 L 80 128 M 86 136 L 85 130 M 97 135 L 95 129 M 108 133 L 106 127 M 118 131 L 117 125 M 128 128 L 128 122" stroke="#E8D8B5" stroke-width="1"/>
+
+  <!-- Radiating Frame Limbs to Apex Pivot -->
+  <line x1="80" y1="35" x2="32" y2="128" stroke="url(#brassMetallic)" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="80" y1="35" x2="128" y2="128" stroke="url(#brassMetallic)" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Cross Bracing (Trefoil Pierced Frame) -->
+  <circle cx="80" cy="88" r="16" fill="none" stroke="url(#brassMetallic)" stroke-width="3"/>
+  <line x1="56" y1="88" x2="104" y2="88" stroke="url(#brassMetallic)" stroke-width="2.5"/>
+  <line x1="80" y1="64" x2="80" y2="114" stroke="url(#brassMetallic)" stroke-width="2.5"/>
+
+  <!-- Telescope Tube -->
+  <rect x="22" y="58" width="56" height="8" rx="2" transform="rotate(-15 50 62)" fill="#18363A" stroke="#B89555" stroke-width="1.8"/>
+  <rect x="18" y="56" width="6" height="12" rx="1" transform="rotate(-15 50 62)" fill="url(#brassMetallic)"/>
+  <circle cx="68" cy="57" r="5" fill="#E8D8B5" fill-opacity="0.3" stroke="#B89555" stroke-width="1"/>
+
+  <!-- Index Mirror at Pivot -->
+  <rect x="74" y="24" width="12" height="18" rx="1.5" fill="#18363A" stroke="#E5C788" stroke-width="1.5"/>
+
+  <!-- Horizon Glass / Mirror -->
+  <rect x="48" y="76" width="10" height="14" rx="1" fill="#718B83" fill-opacity="0.5" stroke="#B89555" stroke-width="1.5"/>
+
+  <!-- Index Arm (Pivots from Apex to Arc) -->
+  <line x1="80" y1="35" x2="94" y2="134" stroke="url(#brassMetallic)" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="80" cy="35" r="7" fill="url(#brassMetallic)" stroke="#49382A" stroke-width="1.5"/>
+  <circle cx="80" cy="35" r="2.5" fill="#F4EBDD"/>
+
+  <!-- Micrometer Drum / Clamp Screw at Arm Base -->
+  <circle cx="94" cy="134" r="6" fill="#B89555" stroke="#49382A" stroke-width="1.2"/>
+  <rect x="91" y="131" width="6" height="6" fill="#F4EBDD"/>
+</svg>

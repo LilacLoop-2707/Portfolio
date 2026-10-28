@@ -1,0 +1,228 @@
+/* =======================================================================
+   THE CAPTAIN'S LOGBOOK — PIRATE-THEMED ANIMATION SYSTEM
+   Purposeful, smooth, atmospheric motion with accessibility compliance
+   ======================================================================= */
+
+/* 1. Status Dot & Beacon Pulses */
+@keyframes pulse-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+    box-shadow: 0 0 6px var(--muted-sea-green);
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 14px var(--muted-sea-green);
+  }
+}
+
+@keyframes pulse-beacon {
+  0% {
+    r: 6;
+    opacity: 0.9;
+    stroke-width: 1.5;
+  }
+  50% {
+    r: 16;
+    opacity: 0.3;
+    stroke-width: 1;
+  }
+  100% {
+    r: 22;
+    opacity: 0;
+    stroke-width: 0.5;
+  }
+}
+
+/* 2. Compass Needle Gentle Drift (Oscillating on Cardinal Heading) */
+@keyframes needle-drift {
+  0% {
+    transform: rotate(-12deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+/* 3. Parchment Unfolding Animation (Section 4 & 11: 500-800ms) */
+@keyframes parchment-unfurl {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.1) scaleY(0.9) skewY(2deg);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  }
+  60% {
+    opacity: 0.9;
+    transform: scaleX(1.03) scaleY(1.01) skewY(-0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1) skewY(0deg);
+    filter: drop-shadow(0 15px 40px rgba(0,0,0,0.7));
+  }
+}
+
+.anim-unfurl {
+  animation: parchment-unfurl 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: left center;
+}
+
+/* 4. Compass Rotation & Settle Animation (Section 4 & 11: 400-700ms) */
+@keyframes compass-spin-settle {
+  0% {
+    transform: rotate(0deg);
+  }
+  65% {
+    transform: rotate(410deg);
+  }
+  85% {
+    transform: rotate(350deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.anim-compass-rotate {
+  animation: compass-spin-settle 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 5. Map Route Drawing Stroke Animation (Section 4 & 11: 700-1000ms) */
+@keyframes dash-trace {
+  from {
+    stroke-dashoffset: 600;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.anim-trace-route {
+  stroke-dasharray: 8, 8;
+  animation: dash-trace 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 6. Treasure Chest Signature Motion (Section 10 & 11: 700-1200ms) */
+.chest-unlocked .chest-lid {
+  transform: translateY(-18px) rotate(-42deg);
+}
+
+.chest-unlocked .chest-glow-aura {
+  opacity: 1;
+  transition: opacity 0.8s ease 0.2s;
+  animation: treasure-gleam 2s infinite alternate ease-in-out;
+}
+
+@keyframes treasure-gleam {
+  0% {
+    transform: scale(0.95);
+    filter: brightness(1);
+  }
+  100% {
+    transform: scale(1.1);
+    filter: brightness(1.35) drop-shadow(0 0 15px rgba(255, 242, 163, 0.6));
+  }
+}
+
+/* 7. Candlelight Flicker on Elements */
+@keyframes candle-flicker {
+  0%, 100% {
+    opacity: 0.96;
+  }
+  25% {
+    opacity: 0.91;
+  }
+  45% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.94;
+  }
+  85% {
+    opacity: 0.89;
+  }
+}
+
+.candle-flickering {
+  animation: candle-flicker 4s infinite ease-in-out;
+}
+
+/* 8. Section Fade & Rise Entrance */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 9. Message In A Bottle Floating Bob */
+@keyframes bottle-bob {
+  0% {
+    transform: translateY(0) rotate(-18deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-15deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-18deg);
+  }
+}
+
+.bottle-floating {
+  animation: bottle-bob 3.5s ease-in-out infinite;
+}
+
+/* 10. Atmospheric Caustic Wave Shimmer */
+@keyframes caustic-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 11. Accessibility: Prefers-Reduced-Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .compass-needle-arrow,
+  .anim-unfurl,
+  .anim-compass-rotate,
+  .anim-trace-route,
+  .bottle-floating,
+  .candle-flickering,
+  .status-dot,
+  .marker-beacon-circle {
+    animation: none !important;
+  }
+
+  .chest-unlocked .chest-lid {
+    transform: translateY(-14px);
+  }
+}
+
+/* Reduced Motion Utility Class (Toggled via button) */
+body.reduced-motion *,
+body.reduced-motion *::before,
+body.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nehal Vyas — Captain's Logbook & Personal Portfolio</title>
+  <meta name="description" content="Personal portfolio of Nehal Vyas exploring Python programming, creative design, and technology, hidden inside the captain's logbook of an elegant pirate ship.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Google Fonts: Cormorant Garamond, Cinzel, Inter, Courier Prime -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Atmospheric Canvas Layer (Subtle Caustics & Candlelit Dust Particles) -->
+  <canvas id="atmosphere-canvas"></canvas>
+  <div class="candle-glow-spot"></div>
+
+  <!-- Top Status Header Bar: Vessel Coordinates & Controls -->
+  <header class="ship-header-bar" role="banner">
+    <div class="vessel-tag">
+      <div class="status-dot" aria-hidden="true"></div>
+      <span id="ship-header-coords">LAT 24° 33' N | LON 76° 12' W</span>
+      <span style="opacity: 0.4;">|</span>
+      <span id="ship-header-status" style="color: var(--weathered-ivory); opacity: 0.85;">The Curiosity • Under Sail</span>
+    </div>
+
+    <div class="header-controls">
+      <!-- Web Audio Ambient Sound Toggle -->
+      <button id="btn-sound-toggle" class="icon-btn-brass" aria-label="Toggle Sea Ambient Sound" title="Toggle Sea Waves & Ambient Soundscape">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+        <span>Sea Audio: Off</span>
+      </button>
+
+      <!-- Reduced Motion Accessibility Toggle -->
+      <button id="btn-motion-toggle" class="icon-btn-brass" aria-label="Toggle Reduced Motion" title="Toggle Reduced Motion">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <span>Motion: Full</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =======================================================================
+       SECTION 3: LANDING PAGE — THE CAPTAIN'S DESK
+       ======================================================================= -->
+  <main id="main-content">
+    <section id="hero" class="hero-section">
+      <!-- Subtle antique desk map grid overlay -->
+      <div class="desk-map-backdrop" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <!-- Logbook Metadata Badge -->
+        <div class="hero-log-header">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 14 14"></polyline>
+          </svg>
+          <span id="hero-log-number">LOGBOOK ENTRY #042</span>
+        </div>
+
+        <!-- Prominent Captain's Name -->
+        <h1 id="hero-captain-name" class="hero-title-name">NEHAL VYAS</h1>
+
+        <!-- Subtitle & Introduction -->
+        <p id="hero-tagline" class="hero-tagline">"Exploring the intersection of code, design, and imagination."</p>
+        <p id="hero-intro" class="hero-intro">
+          I'm building my skills in Python, exploring design, and turning curious ideas into thoughtful digital experiences.
+        </p>
+
+        <!-- Two Main Actions -->
+        <div class="hero-actions-row">
+          <a href="#about" class="btn-brass-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+            </svg>
+            <span>Explore My Voyage</span>
+          </a>
+
+          <a href="#projects" class="btn-brass-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>View My Projects</span>
+          </a>
+        </div>
+
+        <!-- Compass Needle Scroll Indicator -->
+        <div>
+          <a href="#about" class="scroll-compass-indicator" aria-label="Scroll down to Captain's Log">
+            <div class="compass-dial-mini">
+              <div class="compass-needle-arrow"></div>
+            </div>
+            <span>Scroll to Log</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Signature Interaction: The Desk Treasure Chest (Section 10) -->
+      <div class="desk-chest-widget" title="The Captain's Chest">
+        <button class="chest-trigger-btn" aria-label="Inspect the Captain's Secret Treasure Chest">
+          <span class="chest-hint-tag">Secret Chest</span>
+          <img src="assets/svg/treasure-chest.svg" alt="Antique brass-bound pirate treasure chest" width="90" height="70" class="treasure-chest-svg">
+        </button>
+      </div>
+    </section>
+
+    <!-- Treasure Chest Motto Modal -->
+    <div class="chest-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="chest-parchment-scroll">
+        <button class="btn-close-scroll" aria-label="Close Scroll">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="scroll-wax-seal" aria-hidden="true">NV</div>
+
+        <h3 id="chest-scroll-title" class="scroll-title">The Captain's Creed</h3>
+        <p id="chest-scroll-motto" class="scroll-motto">« The sea of knowledge has no shore; the only compass is curiosity. »</p>
+        <p id="chest-scroll-body" class="scroll-body">
+          To whoever unlocks this dispatch: Skills are not born overnight, nor are great ships built in tranquil harbors. The voyage of mastering code and design is long and winding, but every curious experiment, every debugged error, and every thoughtful stroke of the compass brings us closer to the uncharted horizons.
+        </p>
+
+        <div class="scroll-footer">
+          <span id="chest-scroll-author">— Nehal Vyas, Ship's Log</span>
+          <span>Sealed with Pride</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         SECTION 5: ABOUT SECTION — CAPTAIN'S LOGBOOK
+         ======================================================================= -->
+    <section id="about" class="portfolio-section">
+      <div class="section-header-block">
+        <span class="section-pretitle">Log Entry #042 • Volume I</span>
+        <h2 class="section-title">Captain's Logbook</h2>
+        <div class="section-divider">
+          <div class="line"></div>
+          <div class="star">✦</div>
+          <div class="line"></div>
+        </div>
+        <p class="section-subtitle">A record of intellectual pursuits, analytical habits, and creative exploration.</p>
+      </div>
+
+      <!-- Open Leather-Bound Logbook Spread -->
+      <div class="logbook-spread-container">
+        <!-- Brass corner fittings -->
+        <div class="corner-bracket corner-top-left"></div>
+        <div class="corner-bracket corner-top-right"></div>
+        <div class="corner-bracket corner-bottom-left"></div>
+        <div class="corner-bracket corner-bottom-right"></div>
+
+        <div class="logbook-pages-wrapper">
+          <!-- Left Page: Biography & Three Attributes -->
+          <div class="logbook-page-left">
+            <div class="logbook-page-number">
+              <span>FOLIO 14</span>
+              <span>WRITTEN AT SEA</span>
+            </div>
+
+            <h3 id="about-logbook-heading" class="logbook-heading">A Mind That Likes to Explore</h3>
+
+            <div id="about-bio-container">
+              <!-- Populated dynamically via config.js -->
+            </div>
+
+            <!-- Three Maritime Attributes (Section 5) -->
+            <div class="attributes-trio-grid">
+              <!-- 1. Analytical Mind -->
+              <div class="attribute-card">
+                <div class="attribute-icon-frame" title="Analytical Mind">
+                  <img src="assets/svg/sextant.svg" alt="Engraved Sextant Instrument" width="32" height="32">
+                </div>
+                <div>
+                  <h4 class="attribute-title">Analytical Mind</h4>
+                  <div class="attribute-subtitle">Logic & Structured Problem Solving</div>
+                  <p class="attribute-desc">Approaching problems through structured reasoning, deliberate testing, and breaking down complexity into clear, navigable components.</p>
+                </div>
+              </div>
+
+              <!-- 2. Creative Eye -->
+              <div class="attribute-card">
+                <div class="attribute-icon-frame" title="Creative Eye">
+                  <img src="assets/svg/drafting-compass.svg" alt="Drafting Compass Instrument" width="32" height="32">
+                </div>
+                <div>
+                  <h4 class="attribute-title">Creative Eye</h4>
+                  <div class="attribute-subtitle">Visual Harmony & Aesthetics</div>
+                  <p class="attribute-desc">Exploring visual balance, typography, color harmony, and the subtle details that elevate a digital interface from functional to memorable.</p>
+                </div>
+              </div>
+
+              <!-- 3. Curious Explorer -->
+              <div class="attribute-card">
+                <div class="attribute-icon-frame" title="Curious Explorer">
+                  <img src="assets/svg/astrolabe.svg" alt="Antique Astrolabe Instrument" width="32" height="32">
+                </div>
+                <div>
+                  <h4 class="attribute-title">Curious Explorer</h4>
+                  <div class="attribute-subtitle">Uncharted Technologies</div>
+                  <p class="attribute-desc">Constantly venturing into new libraries, languages, and creative domains with humility and a relentless drive to master modern tools.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Page: Captain's Portrait Frame & Voyage Facts -->
+          <div class="logbook-page-right">
+            <div>
+              <div class="logbook-page-number">
+                <span>PORTRAIT FOLIO</span>
+                <span>REGISTRY #09</span>
+              </div>
+
+              <div class="captain-portrait-container">
+                <!-- Antique Gold Filigree Portrait Oval -->
+                <div class="captain-portrait-frame">
+                  <div class="portrait-overlay-filigree"></div>
+                  <!-- Elegant Maritime Nautical Insignia Avatar -->
+                  <div class="portrait-avatar-svg">
+                    <img src="assets/svg/compass-rose.svg" alt="Compass Rose Insignia" width="100%" height="100%">
+                  </div>
+                </div>
+
+                <div id="about-portrait-name" class="captain-portrait-caption">Nehal Vyas</div>
+                <div id="about-portrait-status" class="captain-status-badge">Active Voyager</div>
+              </div>
+
+              <!-- Dispatch Log Table -->
+              <div class="captain-dispatch-table">
+                <div class="dispatch-row">
+                  <span class="dispatch-label">Primary Medium:</span>
+                  <span class="dispatch-val">Python & Modern Web</span>
+                </div>
+                <div class="dispatch-row">
+                  <span class="dispatch-label">Coordinates:</span>
+                  <span id="about-portrait-coords" class="dispatch-val">LAT 24° 33' N | LON 76° 12' W</span>
+                </div>
+                <div class="dispatch-row">
+                  <span class="dispatch-label">Flagship Vessel:</span>
+                  <span class="dispatch-val">The Curiosity</span>
+                </div>
+                <div class="dispatch-row">
+                  <span class="dispatch-label">Current Course:</span>
+                  <span id="about-portrait-course" class="dispatch-val">Python Foundations & Creative Web</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Page Seal Stamp -->
+            <div style="text-align: center; margin-top: 2rem;">
+              <svg width="40" height="40" viewBox="0 0 100 100" opacity="0.4" style="margin: 0 auto;">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#49382A" stroke-width="2" stroke-dasharray="3,3"/>
+                <text x="50" y="55" font-family="'Cinzel', serif" font-size="14" text-anchor="middle" fill="#49382A">NV 2026</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 6: SKILLS SECTION — THE CAPTAIN'S INSTRUMENTS
+         ======================================================================= -->
+    <section id="skills" class="portfolio-section">
+      <div class="section-header-block">
+        <span class="section-pretitle">Navigation Tools & Knowledge</span>
+        <h2 class="section-title">The Captain's Instruments</h2>
+        <div class="section-divider">
+          <div class="line"></div>
+          <div class="star">✦</div>
+          <div class="line"></div>
+        </div>
+        <p class="section-subtitle">
+          An honest assessment of computational tools and design competencies. No fabricated percentage meters — only deliberate practice.
+        </p>
+      </div>
+
+      <!-- Instrument Panels Grid -->
+      <div class="instruments-deck-grid">
+        <!-- Instrument 1: Python Programming -->
+        <div class="instrument-panel-card">
+          <div class="panel-rivet rivet-tl"></div>
+          <div class="panel-rivet rivet-tr"></div>
+          <div class="panel-rivet rivet-bl"></div>
+          <div class="panel-rivet rivet-br"></div>
+
+          <div class="instrument-header">
+            <div class="instrument-icon-housing">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#E5C788" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3 class="instrument-title">Python Programming</h3>
+              <span class="instrument-status-badge">Primary Computational Anchor</span>
+            </div>
+          </div>
+
+          <p class="instrument-summary">
+            Python serves as my primary anchor for computational problem-solving, structured scripts, and data exploration.
+          </p>
+
+          <!-- Topics List -->
+          <div id="skills-python-topics" class="instrument-topics-list">
+            <!-- Populated dynamically via config.js -->
+          </div>
+        </div>
+
+        <!-- Instrument 2: Visual Design -->
+        <div class="instrument-panel-card">
+          <div class="panel-rivet rivet-tl"></div>
+          <div class="panel-rivet rivet-tr"></div>
+          <div class="panel-rivet rivet-bl"></div>
+          <div class="panel-rivet rivet-br"></div>
+
+          <div class="instrument-header">
+            <div class="instrument-icon-housing">
+              <img src="assets/svg/drafting-compass.svg" alt="Drafting Compass" width="30" height="30">
+            </div>
+            <div>
+              <h3 class="instrument-title">Visual Design & UX</h3>
+              <span class="instrument-status-badge">Aesthetic Drafting Compass</span>
+            </div>
+          </div>
+
+          <p class="instrument-summary">
+            Developing an intuitive feel for layout rhythm, typographic hierarchy, and atmospheric user experiences.
+          </p>
+
+          <!-- Topics List -->
+          <div id="skills-design-topics" class="instrument-topics-list">
+            <!-- Populated dynamically via config.js -->
+          </div>
+        </div>
+
+        <!-- Instrument 3: Tools & Technologies -->
+        <div class="instrument-panel-card">
+          <div class="panel-rivet rivet-tl"></div>
+          <div class="panel-rivet rivet-tr"></div>
+          <div class="panel-rivet rivet-bl"></div>
+          <div class="panel-rivet rivet-br"></div>
+
+          <div class="instrument-header">
+            <div class="instrument-icon-housing">
+              <img src="assets/svg/ship-wheel.svg" alt="Ship Wheel" width="30" height="30">
+            </div>
+            <div>
+              <h3 class="instrument-title">Rigging & Tackle</h3>
+              <span class="instrument-status-badge">Daily Equipment</span>
+            </div>
+          </div>
+
+          <p class="instrument-summary">
+            The practical instruments I employ daily to write, version-control, document, and manage my work.
+          </p>
+
+          <!-- Tools Badges Grid -->
+          <div id="skills-tools-grid" class="tools-badge-grid">
+            <!-- Populated dynamically via config.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 7: PROJECTS — TREASURES OF THE VOYAGE
+         ======================================================================= -->
+    <section id="projects" class="portfolio-section">
+      <div class="section-header-block">
+        <span class="section-pretitle">Expedition Waypoints</span>
+        <h2 class="section-title">Treasures of the Voyage</h2>
+        <div class="section-divider">
+          <div class="line"></div>
+          <div class="star">✦</div>
+          <div class="line"></div>
+        </div>
+        <p class="section-subtitle">
+          Each project is a destination charted across the sea. Click any island waypoint on the antique map to trace the route and inspect the discovery.
+        </p>
+      </div>
+
+      <!-- Nautical Map Container -->
+      <div class="nautical-voyage-container">
+        <!-- Interactive SVG Nautical Map Viewport -->
+        <div class="voyage-map-viewport">
+          <svg id="nautical-map-svg" viewBox="0 0 1000 480" preserveAspectRatio="xMidYMid meet">
+            <!-- Sea Grid & Rhumb Lines -->
+            <g id="map-rhumb-lines-group"></g>
+
+            <!-- Islands Contours -->
+            <g id="map-islands-group"></g>
+
+            <!-- Animated Route Trail -->
+            <g id="map-route-group"></g>
+
+            <!-- Destination Markers -->
+            <g id="map-markers-group"></g>
+          </svg>
+        </div>
+
+        <!-- Project Detail Card (Parchment emerging below map) -->
+        <div id="project-detail-card-container">
+          <!-- Populated dynamically via map.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 8: THE CHART ROOM — LEARNING & INTERESTS
+         ======================================================================= -->
+    <section id="chart-room" class="portfolio-section">
+      <div class="section-header-block">
+        <span class="section-pretitle">The Navigation Table</span>
+        <h2 class="section-title">The Chart Room</h2>
+        <div class="section-divider">
+          <div class="line"></div>
+          <div class="star">✦</div>
+          <div class="line"></div>
+        </div>
+        <p class="section-subtitle">
+          Pinned notes, reading explorations, and future experiments under study in the captain's private quarters.
+        </p>
+      </div>
+
+      <div id="chart-room-grid" class="chart-room-pinboard">
+        <!-- Populated dynamically via main.js from config.js -->
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 9: CONTACT SECTION — SEND A MESSAGE ACROSS THE SEA
+         ======================================================================= -->
+    <section id="contact" class="portfolio-section">
+      <div class="section-header-block">
+        <span class="section-pretitle">Ocean Dispatch</span>
+        <h2 class="section-title">Send a Message Across the Sea</h2>
+        <div class="section-divider">
+          <div class="line"></div>
+          <div class="star">✦</div>
+          <div class="line"></div>
+        </div>
+        <p class="section-subtitle">
+          "Every Great Voyage Begins with a Conversation."
+        </p>
+      </div>
+
+      <div class="contact-voyage-wrapper">
+        <!-- Floating Antique Bottle SVG Accent -->
+        <div style="position: absolute; top: -50px; right: -20px; width: 85px; height: 85px; pointer-events: none; z-index: 12;" class="bottle-floating">
+          <img src="assets/svg/message-bottle.svg" alt="Message in a bottle" width="100%" height="100%">
+        </div>
+
+        <!-- Unfolded Sealed Letter Parchment -->
+        <div class="message-scroll-unfolded">
+          <div class="corner-bracket corner-top-left" style="border-color: #B89555;"></div>
+          <div class="corner-bracket corner-top-right" style="border-color: #B89555;"></div>
+          <div class="corner-bracket corner-bottom-left" style="border-color: #B89555;"></div>
+          <div class="corner-bracket corner-bottom-right" style="border-color: #B89555;"></div>
+
+          <h3 class="contact-scroll-heading">Dispatch to the Captain</h3>
+          <p class="contact-scroll-subtext">
+            Whether you want to discuss Python, creative coding, collaborate on a project, or simply exchange notes across the sea — send a dispatch.
+          </p>
+
+          <!-- Contact Status Banner -->
+          <div id="contact-status-alert" class="form-status-alert" role="status" aria-live="polite"></div>
+
+          <!-- Contact Form -->
+          <form id="captain-contact-form" class="contact-form-grid" novalidate>
+            <div class="form-field-group">
+              <label for="contact-name" class="form-field-label">Your Name / Title:</label>
+              <input type="text" id="contact-name" class="parchment-input" placeholder="e.g. Captain Eleanor Drake" required>
+            </div>
+
+            <div class="form-field-group">
+              <label for="contact-email" class="form-field-label">Return Signal / Email:</label>
+              <input type="email" id="contact-email" class="parchment-input" placeholder="e.g. voyager@frontiers.org" required>
+            </div>
+
+            <div class="form-field-group">
+              <label for="contact-message" class="form-field-label">Ship's Dispatch / Message:</label>
+              <textarea id="contact-message" class="parchment-textarea" placeholder="Inscribe your thoughts, ideas, or voyage proposals here..." required></textarea>
+            </div>
+
+            <button type="submit" id="btn-send-dispatch" class="btn-brass-primary" style="align-self: center; margin-top: 0.5rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <span>Seal & Dispatch Message</span>
+            </button>
+          </form>
+
+          <!-- Professional Profiles & Contact Channels -->
+          <div class="contact-channels-row">
+            <a id="contact-email-link" href="mailto:nehalvyas@example.com" class="channel-link-btn" title="Direct Email">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>nehalvyas@example.com</span>
+            </a>
+
+            <a id="contact-github-link" href="https://github.com" target="_blank" rel="noopener" class="channel-link-btn" title="GitHub Profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              <span>GitHub</span>
+            </a>
+
+            <a id="contact-linkedin-link" href="https://linkedin.com" target="_blank" rel="noopener" class="channel-link-btn" title="LinkedIn Profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =======================================================================
+       SECTION 4: NAVIGATION — THE SHIP'S CONTROL PANEL
+       ======================================================================= -->
+  <nav class="nav-control-panel" role="navigation" aria-label="Ship Navigation Bar">
+    <a href="#about" class="nav-item-btn" data-target="#about">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+      <span>Captain's Log</span>
+    </a>
+
+    <a href="#skills" class="nav-item-btn" data-target="#skills">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+      </svg>
+      <span>Skills & Tools</span>
+    </a>
+
+    <a href="#projects" class="nav-item-btn" data-target="#projects">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+        <line x1="8" y1="2" x2="8" y2="18"></line>
+        <line x1="16" y1="6" x2="16" y2="22"></line>
+      </svg>
+      <span>My Voyage</span>
+    </a>
+
+    <a href="#chart-room" class="nav-item-btn" data-target="#chart-room">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="3" y1="9" x2="21" y2="9"></line>
+        <line x1="9" y1="21" x2="9" y2="9"></line>
+      </svg>
+      <span>The Chart Room</span>
+    </a>
+
+    <a href="#contact" class="nav-item-btn" data-target="#contact">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <!-- Mobile Collapsible Journal Navigation -->
+  <button class="mobile-nav-toggle" aria-label="Open Ship Navigation Menu" aria-expanded="false">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true">
+    <button class="mobile-nav-close" style="position: absolute; top: 1.5rem; right: 1.5rem; background: transparent; border: none; color: var(--antique-gold); cursor: pointer;" aria-label="Close Navigation">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--antique-gold-bright); margin-bottom: 1rem;">
+      The Ship's Logbook
+    </div>
+
+    <a href="#about" class="mobile-nav-link" style="color: var(--weathered-ivory); font-family: var(--font-display); font-size: 1.25rem; text-decoration: none;">Captain's Log — About Me</a>
+    <a href="#skills" class="mobile-nav-link" style="color: var(--weathered-ivory); font-family: var(--font-display); font-size: 1.25rem; text-decoration: none;">Skills & Instruments</a>
+    <a href="#projects" class="mobile-nav-link" style="color: var(--weathered-ivory); font-family: var(--font-display); font-size: 1.25rem; text-decoration: none;">My Voyage — Projects</a>
+    <a href="#chart-room" class="mobile-nav-link" style="color: var(--weathered-ivory); font-family: var(--font-display); font-size: 1.25rem; text-decoration: none;">The Chart Room</a>
+    <a href="#contact" class="mobile-nav-link" style="color: var(--weathered-ivory); font-family: var(--font-display); font-size: 1.25rem; text-decoration: none;">Contact the Captain</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="ship-footer-section">
+    <p class="footer-quote">"The sea of knowledge has no shore; the only compass is curiosity."</p>
+    <p class="footer-credits">
+      Crafted with precision by <strong>Nehal Vyas</strong> • Built with Python Spirit, Web Standards & Pirate-Inspired Storytelling • Anno 2026
+    </p>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/atmosphere.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/chest.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

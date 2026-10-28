@@ -230,3 +230,4 @@ You can also directly open `index.html` in Chrome, Safari, Firefox, or Edge.
 - **Contrast**:
   - Dark background text uses weathered ivory (`#F4EBDD`) with contrast exceeding WCAG AA standards.
   - Parchment text uses deep faded ink (`#49382A`) for effortless legibility.
+

@@ -171,3 +171,4 @@ class CaptainAtmosphere {
 window.addEventListener('DOMContentLoaded', () => {
   window.captainAtmosphere = new CaptainAtmosphere();
 });
+

@@ -282,3 +282,4 @@ class NauticalMapController {
 window.addEventListener('DOMContentLoaded', () => {
   window.nauticalMapController = new NauticalMapController();
 });
+

@@ -215,3 +215,4 @@ class ShipSoundscape {
 window.addEventListener('DOMContentLoaded', () => {
   window.shipSoundscape = new ShipSoundscape();
 });
+

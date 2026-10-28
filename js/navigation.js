@@ -199,3 +199,4 @@ class ShipNavigation {
 window.addEventListener('DOMContentLoaded', () => {
   window.shipNavigation = new ShipNavigation();
 });
+

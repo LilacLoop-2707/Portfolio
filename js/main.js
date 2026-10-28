@@ -181,3 +181,4 @@ function bindTreasureChestScroll(chestData) {
   const author = document.getElementById('chest-scroll-author');
   if (author) author.textContent = `${chestData.author} • ${chestData.year}`;
 }
+

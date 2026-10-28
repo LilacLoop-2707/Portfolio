@@ -85,3 +85,4 @@ class TreasureChestController {
 window.addEventListener('DOMContentLoaded', () => {
   window.treasureChestController = new TreasureChestController();
 });
+

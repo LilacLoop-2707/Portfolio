@@ -277,3 +277,4 @@ window.PORTFOLIO_CONFIG = {
     year: "Anno 2026"
   }
 };
+
